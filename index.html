@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System</title>
+</head>
+<body>
+    <center><h1>Online Voting System</h1></center>
+    <div class="container">
+        <div class="cont">
+            <div class="logo"></div>
+            <p class="quote"><span>E</span>lections belong to the people. It's their decision.</p>
+        </div>
+        
+        <form action="api/login.php" method="POST">
+    
+            <input type="number" name="mobile" placeholder="Enter Mobile">
+            <input type="password" name="password" placeholder="Enter password">
+            <select name="role" id="" >
+                <option value="1">voter</option>
+                <option value="2">group</option>
+            </select>
+            <button>login</button>
+            <hr>
+           <p class="newUser">New User <a href="routes/register.html">Register Here</a></p>
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+    html{
+        background-color:#60b3d1 ;
+    }
+    *{
+        padding: 0px;
+        margin: 0px;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+    .container{
+        
+        width: 80%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+        border-radius: 6px;
+        padding: 50px;
+        background-color: #012641;
+        color: #f4fbfd;
+        box-shadow: 0px 0px 10px 0px black;
+        margin-top:10%;
+    }
+    .cont{
+        width: 60%;
+    }
+    form{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        padding: 20px 0px;
+    }
+    span{
+        color: #60b3d1;
+        font-size:75px ;
+        font-family:cursive;
+    }
+    .quote{
+        font-size: 40px;
+        font-weight: bolder;
+        font-family:sans-serif;
+    }
+    input{
+        border: none;
+        padding: 4px;
+        font-size: 18px;
+        outline: none;
+        border-bottom: 2px solid #60b3d1;
+        background-color: transparent;
+        color: #f4fbfd;
+        width: 100%;
+    }
+    input::placeholder{
+        align-self: center;
+        color: #f4fbfd;
+    }
+    input{
+        margin:10px 0px;
+    }
+    select{
+        width:40%;
+        outline-color: #60b3d1;
+        background-color:#110e0e88;
+        text-align: center;
+        color:#f4fbfd ;
+        padding: 3px;
+    }
+    option{
+        background-color:#110e0eb6;
+        cursor: pointer;
+    }
+    button{
+        margin-top:10px;
+        margin-bottom:5px;
+        width:40%;
+        padding:5px;
+        font-size: 16px;
+        background-color:#f4fbfd ;
+        color: #012641;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    hr{
+        background-color: #f4fbfd;
+        width: 100%;
+    }
+    .newUser{
+        margin-top: 15px;
+        
+    }
+    a{
+        color: #60b3d1;
+    }
+</style>

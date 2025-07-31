@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <center>
+        <h1>Online Voting System</h1>
+    <h3>Registration</h3>
+    </center>
+
+    <div class="container">
+
+
+        <div class="guide">
+            <h2>Check credentials</h2>
+            <br>
+            <ol type="i">
+                <li>
+                    <p> Valid Full Name</p>
+                    <p><strong>Input:</strong> Full Name: "John Doe"</p>
+                    <p><strong>Expected Behavior:</strong> Form accepts the name as valid.</p>
+                </li>
+                <li>
+                    <p>Valid Date of Birth (Eligible Age)</p>
+                    <p><strong>Input:</strong> Date of Birth: "2000-12-06"</p>
+                    <p><strong>Expected Behavior:</strong> An alert displays: "You are eligible."</p>
+                </li>
+                <li>
+                    <p> Invalid Date of Birth (Underage)</p>
+                    <p><strong>Input:</strong> Date of Birth: "2010-01-01"</p>
+                    <p><strong>Expected Behavior:</strong> An alert displays: "You are not eligible. Age is less than 18. Come here when your age crosses 18+."</p>
+                </li>
+                <li>
+                    <p> Valid Mobile Number</p>
+                    <p><strong>Input:</strong> Mobile Number: "9876543210"</p>
+                    <p><strong>Expected Behavior:</strong> An alert displays: "Valid mobile number: 9876543210."</p>
+                </li>
+                <li>
+                    <p> Invalid Mobile Number (Less than 10 digits)</p>
+                    <p><strong>Input:</strong> Mobile Number: "98765"</p>
+                    <p><strong>Expected Behavior:</strong> An alert displays: "Invalid input! Please enter a 10-digit number starting with 6, 7, 8, or 9."</p>
+                </li>
+                <li>
+                    <p>Invalid Mobile Number (Doesn't Start with 6, 7, 8, or 9)</p>
+                    <p><strong>Input:</strong> Mobile Number: "1234567890"</p>
+                    <p><strong>Expected Behavior:</strong> An alert displays: "Invalid input! Please enter a 10-digit number starting with 6, 7, 8, or 9."</p>
+                </li>
+                <li>
+                    <p> Valid Password and Confirm Password</p>
+                    <p><strong>Input:</strong> Password: "securePassword123", Confirm Password: "securePassword123"</p>
+                    <p><strong>Expected Behavior:</strong> Form accepts the passwords as valid.</p>
+                </li>
+                <li>
+                    <p>Mismatched Password and Confirm Password</p>
+                    <p><strong>Input:</strong> Password: "securePassword123", Confirm Password: "securePassword"</p>
+                    <p><strong>Expected Behavior:</strong> Form submission fails, and an alert should notify about mismatched passwords.</p>
+                </li>
+                <li>
+                    <p>File Upload</p>
+                    <p><strong>Input:</strong> Uploaded File: A valid image file (e.g., "profile.jpg").</p>
+                    <p><strong>Expected Behavior:</strong> The form accepts the file as valid.</p>
+                </li>
+                <li>
+                    <p>Missing Required Fields</p>
+                    <p><strong>Input:</strong> Leave the Full Name, Mobile Number, or Address fields empty.</p>
+                    <p><strong>Expected Behavior:</strong> The form prevents submission and displays validation messages.</p>
+                </li>
+                <li>
+                    <p>Selecting User Role</p>
+                    <p><strong>Input:</strong> Role Selection: "Voter" or "Group"</p>
+                    <p><strong>Expected Behavior:</strong> Form accepts the selection as valid.</p>
+                </li>
+                <li>
+                    <p>
+                         Form Submission</p>
+                    <p><strong>Input:</strong> All fields filled with valid inputs.</p>
+                    
+                </li>
+            </ol>
+
+        </div>
+
+        <form action="../api/register.php" method="POST" enctype="multipart/form-data">
+
+            <div class="cont-name"><label for="name">Full Name : </label>
+                <input type="text" name="name" id="name" required>
+        </div>
+    
+            <div class="cont-date">
+                <label for="birthDate">Enter your date of birth:</label>
+        <input type="date" id="birthDate" onchange="checkAge()">
+            </div>
+    
+            <div class="cont-mobile">
+                <label for="mobileInput">Number : </label>
+            <input type="number" name="number" required id="mobileInput" onchange="validateMobile()">
+            </div>
+    
+            <div class="cont-pwd">
+                <label for="pwd">Password : </label>
+            <input type="password" name="password"  id="pwd">
+            </div>
+    
+            <div class="cont-cpwd">
+                <label for="cpwd">Confirm Passwod : </label>
+            <input type="password" name="cpassword"  id="cpwd" required>
+            </div>
+    
+            <div class="cont-add">
+                <label for="add">Address : </label>
+            <input type="text" name="address" id="add"   required>
+            </div>
+            
+            <div class="cont-image">
+                <label for="image">Upload Image</label>
+            <input type="file" name="image" id="image" required>
+            </div>
+            <div class="btn-area">
+                <select name="role" required>
+                    <option value="1">Voter</option>
+                    <option value="2">Group</option>
+                </select>
+                <button type="submit">Register</button> 
+            </div>
+            <hr>
+            <p class="btm">Already User? <a href="../index.html">Login Here</a></p>
+        </form>
+    
+    </div>
+
+</body>
+</html>
+
+<style>
+    h1{
+    
+    }
+    html{
+        background-color: #f1fc54;
+    }
+    *{
+        padding: 0px;
+        margin: 0px;
+        color: #000;
+        letter-spacing: 1px;
+    }
+    .container{
+        width: 100%;
+        display: flex;
+        
+    }
+    .guide{
+        letter-spacing: 0px;
+        width: 60%;
+        background-color: rgba(255, 166, 0, 0.88);
+        padding: 60px 60px;
+        border-radius:16px;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.469);
+    }
+    label{
+        font-family: sans-serif;
+        color: #8B5DFF;
+    }
+    input{
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 3px 4px;
+        width:max-content;
+        background-color: transparent;
+        border-bottom: 2px solid #5f5e5e7d;
+        width: 100%;
+        color: black;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        padding: 30px;
+        border: 1px solid black;
+        border-radius: 14px;
+        background-color: #f8ffcd;
+        width: 40%;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.469);
+    }
+    form div{
+        padding: 5px;
+        
+    }
+    option{
+        background-color:#6A42C2 ;
+    }
+    select{
+        background-color:#8B5DFF ;
+        padding: 5px;
+        outline:none ;
+        width: 20%;
+    }
+    .btn-area{
+        width: 100%;
+        display: flex;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    button{
+        width: 80%;
+        font-size: 16px;
+        background-color:#FFFF80 ;
+        color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    hr{
+        background-color: #5f5e5e7d;
+    }
+    .btm{
+        margin-top: 20px;
+        align-self: center;
+    }
+    a{
+        color: #8B5DFF;
+        letter-spacing: 2px;
+    }
+</style>
+
+
+<script>
+    function calculateAge(birthDate) {
+      const today = new Date();
+      const birth = new Date(birthDate);
+      let age = today.getFullYear() - birth.getFullYear();
+      const monthDifference = today.getMonth() - birth.getMonth();
+      if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birth.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    function checkAge() {
+      const birthDate = document.getElementById('birthDate').value;
+      if (!birthDate) {
+        alert("Please enter your date of birth.");
+        return;
+      }
+      const age = calculateAge(birthDate);
+      if (age < 18) {
+        alert("You are not eligible. Age is less than 18.come Here when your age cross 18+");
+        window.location="../";
+      } else {
+        alert("You are eligible.");
+      }
+    }
+
+    function validateMobile() {
+  const mobileInput = document.getElementById('mobileInput').value;
+
+  // Regex to ensure the number starts with 6, 7, 8, or 9 and has exactly 10 digits
+  const isValid = /^[6-9]\d{9}$/.test(mobileInput);
+
+  if (isValid) {
+  } else {
+    alert("Invalid input! Please enter a 10-digit number starting with 6, 7, 8, or 9.");
+  }
+}
+  
+  </script>
